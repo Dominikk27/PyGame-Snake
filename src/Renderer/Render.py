@@ -28,6 +28,12 @@ class Render:
         pixel_y = food.position[1] * board.cell_size
         pygame.draw.rect(self.screen, food.color, (pixel_x, pixel_y, board.cell_size, board.cell_size))
 
+    def draw_score(self, score):
+            font = pygame.font.SysFont("Comic Sans MS", 30)
+            scoreLabel = font.render("Score: " + str(score.score), True, (0, 0, 0))
+            self.screen.blit(scoreLabel, (25, 25))
+
 
     def game_over(self):
         self.screen.fill(pygame.Color(255, 0, 0))
+    

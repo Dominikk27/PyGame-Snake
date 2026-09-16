@@ -1,8 +1,13 @@
 import pygame
 from Board.Board import Board
-from Renderer.Render import Render
+
 from Snake.Snake import Snake
+from Snake.Score import Score
+
 from Food.Food import Food
+
+from Renderer.Render import Render
+
 
 
 def main():
@@ -17,8 +22,8 @@ def main():
     render = Render(screen)
 
     snake = Snake(board)
-
-    food = Food(board, snake) 
+    score = Score() 
+    food = Food(board, snake, score)
 
 
     running = True
@@ -27,6 +32,7 @@ def main():
         if not snake.game_over:
             screen.fill(pygame.Color(199, 234, 70))
             render.draw_grid(board)
+            render.draw_score(score)
 
             snake.move_snake()
             food.eat_food()

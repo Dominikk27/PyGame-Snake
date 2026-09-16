@@ -11,7 +11,6 @@ class Board:
         self.rows = height//cell_size
         self.columns = width//cell_size
 
-        print("Board init")
 
 
     """ def build_board(self):
