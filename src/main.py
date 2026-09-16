@@ -8,6 +8,8 @@ from Food.Food import Food
 
 from Renderer.Render import Render
 
+from Autopilot.DumbSnake import DumbSnake
+
 
 
 def main():
@@ -25,6 +27,8 @@ def main():
     score = Score() 
     food = Food(board, snake, score)
 
+    dumb = DumbSnake(snake, food)
+
 
     running = True
 
@@ -33,7 +37,7 @@ def main():
             screen.fill(pygame.Color(199, 234, 70))
             render.draw_grid(board)
             render.draw_score(score)
-
+            dumb.chose_direction()
             snake.move_snake()
             food.eat_food()
             render.draw_snake(board, snake)
