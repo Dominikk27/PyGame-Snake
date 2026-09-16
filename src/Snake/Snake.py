@@ -6,7 +6,28 @@ class Snake:
         self.grow = False
         self.color = (214, 20, 5)
         self.head = (54,18)
-        self.body = [(54, 17), (54, 16)]
+        self.body = [
+            (54, 19),
+            (54, 20),
+            (54, 21),
+            (54, 22),
+            (54, 23),
+            (54, 24),
+            (54, 25),
+            (54, 26),
+            (54, 27),
+            (54, 28),
+            (54, 29),
+            (54, 30),
+            (54, 31),
+            (54, 32),
+            (54, 33),
+            (54, 34),
+            (54, 35),
+            (54, 36),
+            (54, 37),
+        ]
+        #self.body = [(54, 19), (54, 20)]
 
         self.board = board
         self.direction = (0, -1)
@@ -23,13 +44,15 @@ class Snake:
         )
 
         self.body.insert(0, self.head)
-
         self.head = new_head
 
         if not self.grow:
             self.body.pop()
         else:
             self.grow = False
+
+        if self.head in self.body:
+            self.game_over = True
             
 
         if(
