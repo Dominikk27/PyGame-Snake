@@ -33,6 +33,7 @@ class Render:
             scoreLabel = font.render("Score: " + str(score.score), True, (0, 0, 0))
             self.screen.blit(scoreLabel, (25, 25))
 
+    
 
     def game_over(self):
         self.screen.fill(pygame.Color(255, 0, 0))
