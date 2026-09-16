@@ -95,6 +95,8 @@ class AstarSnake:
 
 
     def change_direction(self, path):
+        if len(path) < 2:
+            return None
         current = path[0]
         next = path[1]
 

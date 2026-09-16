@@ -17,7 +17,7 @@ from Autopilot.Astar.AstarNode import AstarNode
 def main():
     pygame.init()
 
-    screen = pygame.display.set_mode((1280, 720))
+    screen = pygame.display.set_mode((720, 720))
     clock = pygame.time.Clock()
 
     ASTAR_EVENT = pygame.USEREVENT + 1
@@ -25,7 +25,7 @@ def main():
 
     grid_width = 20
 
-    board = Board(1280, 720, 20)
+    board = Board(720, 720, 20)
     render = Render(screen)
 
     snake = Snake(board)
@@ -50,13 +50,6 @@ def main():
             render.draw_score(score)
             #dumb.chose_direction()
 
-            a_node = AstarNode(snake.head)
-            a_node.h = astar.manhattan_dist(snake.head, food.position)
-            a_node.calculate_f()
-
-            path = astar.find_path(board, a_node)
-            direction = astar.change_direction(path)
-
             render.draw_snake(board, snake)
             render.draw_food(board, food)
 
@@ -74,7 +67,13 @@ def main():
         for event in pygame.event.get():
 
             if event.type == ASTAR_EVENT:
-                snake.change_direction(direction)
+                a_node = AstarNode(snake.head)
+                a_node.h = astar.manhattan_dist(snake.head, food.position)
+                a_node.calculate_f()
+                path = astar.find_path(board, a_node)
+                direction = astar.change_direction(path)
+                if direction:
+                    snake.change_direction(direction)
                             
                 snake.move_snake()
                 food.eat_food()

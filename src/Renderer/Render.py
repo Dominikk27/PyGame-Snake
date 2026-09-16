@@ -31,7 +31,7 @@ class Render:
     def draw_score(self, score):
             font = pygame.font.SysFont("Comic Sans MS", 30)
             scoreLabel = font.render("Score: " + str(score.score), True, (0, 0, 0))
-            self.screen.blit(scoreLabel, (25, 25))
+            self.screen.blit(scoreLabel, (10, 10))
 
     
 
